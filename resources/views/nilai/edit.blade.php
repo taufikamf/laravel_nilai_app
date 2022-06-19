@@ -11,43 +11,52 @@
     Edit Data User
   </div>
   <div class="card-body">
-    @if ($errors->any())
-      <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-              <li>{{ $error }}</li>
+      <form method="POST" action="{{ route('nilai.update', $nilai->id) }}">
+        @csrf
+        @method('PATCH')
+        <div class="form-group">
+          <label for="country_name">Nilai :</label>
+          <input type="number" class="form-control" name="nilai" value="{{$nilai->nilai}}"/>
+      </div>
+        <div class="form-group">
+          <label for="cases">Nama Matkul :</label>
+          <select name="id_matkul" class="form-control" required>
+            <option value="" selected disabled>Pilih Nama Matkul</option>
+            @foreach($matkul as $key => $nama)
+            @if($nilai->id_matkul == $key)
+              <option value="{{$key}}" selected>{{$nama}}</option>
+              @else
+              <option value="{{$key}}">{{$nama}}</option>
+            @endif
+              @endforeach
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="cases">Nama Kriteria :</label>
+          <select name="id_kriteria" class="form-control" required>
+            <option value="" selected disabled>Pilih Nama Kriteria</option>
+            @foreach($kriteria as $key => $nama)
+            @if($nilai->id_kriteria == $key)
+              <option value="{{$key}}" selected>{{$nama}}</option>
+              @else
+              <option value="{{$key}}">{{$nama}}</option>
+            @endif
             @endforeach
-        </ul>
-      </div><br />
-    @endif
-      <form method="post" action="{{ route('user.update', $user->id ) }}">
-          <div class="form-group">
-              @csrf
-              @method('PATCH')
-              <label for="country_name">Nama :</label>
-              <input type="text" class="form-control" name="name" value="{{ $user->name }}"/>
-          </div>
-          <div class="form-group">
-              <label for="cases">Email :</label>
-              <input type="text" class="form-control" name="email" value="{{ $user->email }}"/>
-          </div>
-          <div class="form-group">
-              <label for="cases">Password :</label>
-              <input type="password" class="form-control" name="password" value="{{ $user->password }}"/>
-          </div>
-          <div class="form-group">
-              <label for="cases">Nomor Identitas :</label>
-              <input type="text" class="form-control" name="nomor_identitas" value="{{ $user->nomor_identitas }}"/>
-          </div>
-          <div class="form-group">
-              <label for="cases">Role :</label>
-              <select id="defaultSelect" name="role" class="form-select">
-                <option disabled value="">Pilih Role</option>
-                <option @if($user->role == 1) selected @endif value="1">Admin</option>
-                <option @if($user->role == 2) selected @endif value="2">Dosen</option>
-                <option @if($user->role == 3) selected @endif value="3">Mahasiswa</option>
-              </select>
-          </div>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="cases">Nama Mahassiwa :</label>
+          <select name="id_user" class="form-control" required>
+            <option value="" selected disabled>Pilih Nama Mahasiswa</option>
+            @foreach($user as $key => $name)
+              @if($nilai->id_user == $key)
+                <option value="{{$key}}" selected>{{$name}}</option>
+              @else
+                <option value="{{$key}}">{{$name}}</option>
+              @endif
+            @endforeach
+          </select>
+        </div>
           <button type="submit" class="btn btn-primary">Update Data</button>
       </form>
   </div>

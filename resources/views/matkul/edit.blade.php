@@ -28,8 +28,8 @@
               <input type="text" class="form-control" name="name" value="{{ $matkul->name }}"/>
           </div>
           <div class="form-group">
-              <label for="cases">Email :</label>
-              <input type="text" class="form-control" name="email" value="{{ $matkul->deskripsi }}"/>
+              <label for="cases">Deskripsi :</label>
+              <textarea type="text" class="form-control" name="deskripsi" value="{{ $matkul->deskripsi }}"></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Update Matkul</button>
       </form>

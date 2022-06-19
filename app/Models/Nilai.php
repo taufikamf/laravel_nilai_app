@@ -9,7 +9,7 @@ class Nilai extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id_matkul','nilai','id_user'];
+    protected $fillable = ['id_matkul','nilai','id_user','id_kriteria'];
 
     public function matkul() {
         return $this->hasOne(Matkul::class, 'id', 'id_matkul');
@@ -18,4 +18,10 @@ class Nilai extends Model
     public function user(){
         return $this->hasOne(User::class, 'id', 'id_user');
     }
+
+    public function kriteria(){
+        return $this->hasOne(Kriteria::class, 'id', 'id_kriteria');
+    }
+
+
 }

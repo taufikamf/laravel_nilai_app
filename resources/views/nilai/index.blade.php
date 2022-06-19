@@ -17,6 +17,7 @@
         <tr>
           <td>ID</td>
           <td>Nama Matkul</td>
+          <td>Nama Kriteria</td>
           <td>Nama Mahasiswa</td>
           <td>Nilai</td>
           <td colspan="2 text-center">Action</td>
@@ -30,6 +31,7 @@
         <tr>
             <td>{{$nilais->id}}</td>
             <td>{{$nilais->matkul->nama}}</td>
+            <td>{{$nilais->kriteria->nama}}</td>
             <td>{{$nilais->user->name}}</td>
             <td>{{$nilais->nilai}}</td>
             <td><a href="{{ route('nilai.edit', $nilais->id)}}" class="btn btn-primary">Edit</a></td>

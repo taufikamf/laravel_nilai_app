@@ -34,6 +34,16 @@
               <option value="{{$key}}">{{$nama}}</option>
               @endforeach
             </select>
+          </div>
+          <div class="form-group">
+            <label for="cases">Nama Kriteria :</label>
+            <select name="id_kriteria" class="form-control" required>
+              <option value="" selected disabled>Pilih Nama Kriteria</option>
+              @foreach($kriteria as $key => $nama)
+              <option value="{{$key}}">{{$nama}}</option>
+              @endforeach
+            </select>
+          </div>
           <div class="form-group">
             <label for="cases">Nama Mahassiwa :</label>
             <select name="id_user" class="form-control" required>

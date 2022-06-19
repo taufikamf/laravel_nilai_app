@@ -20,33 +20,25 @@
         </ul>
       </div><br />
     @endif
-      <form method="post" action="{{ route('user.update', $user->id ) }}">
+      <form method="post" action="{{ route('kriteria.update', $kriteria->id ) }}">
           <div class="form-group">
               @csrf
               @method('PATCH')
-              <label for="country_name">Nama :</label>
-              <input type="text" class="form-control" name="name" value="{{ $user->name }}"/>
+              <label for="country_name">Nama Kriteria :</label>
+              <input type="text" class="form-control" name="name" value="{{ $kriteria->nama }}"/>
           </div>
           <div class="form-group">
-              <label for="cases">Email :</label>
-              <input type="text" class="form-control" name="email" value="{{ $user->email }}"/>
-          </div>
-          <div class="form-group">
-              <label for="cases">Password :</label>
-              <input type="password" class="form-control" name="password" value="{{ $user->password }}"/>
-          </div>
-          <div class="form-group">
-              <label for="cases">Nomor Identitas :</label>
-              <input type="text" class="form-control" name="nomor_identitas" value="{{ $user->nomor_identitas }}"/>
-          </div>
-          <div class="form-group">
-              <label for="cases">Role :</label>
-              <select id="defaultSelect" name="role" class="form-select">
-                <option disabled value="">Pilih Role</option>
-                <option @if($user->role == 1) selected @endif value="1">Admin</option>
-                <option @if($user->role == 2) selected @endif value="2">Dosen</option>
-                <option @if($user->role == 3) selected @endif value="3">Mahasiswa</option>
-              </select>
+            <label for="cases">Nama Matkul :</label>
+            <select name="id_matkul" class="form-control" required>
+              <option value="" selected disabled>Pilih Nama matkul</option>
+              @foreach($matkul as $key => $nama)
+              @if($kriteria->id_matkul == $key)
+                <option value="{{$key}}" selected>{{$nama}}</option>
+                @else
+                <option value="{{$key}}">{{$nama}}</option>
+              @endif
+              @endforeach
+            </select>
           </div>
           <button type="submit" class="btn btn-primary">Update Data</button>
       </form>

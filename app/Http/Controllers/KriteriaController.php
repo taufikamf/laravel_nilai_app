@@ -67,8 +67,8 @@ class KriteriaController extends Controller
     public function edit($id)
     {
         $kriteria = Kriteria::findOrFail($id);
-
-        return view('kriteria.edit', compact('kriteria'));
+        $matkul = Matkul::pluck('nama', 'id');
+        return view('kriteria.edit', compact('kriteria','matkul'));
     }
 
     /**
@@ -81,11 +81,8 @@ class KriteriaController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'name' => 'required',
-            'email' => 'required|unique:users,email,'.$id,
-            'password' => 'required',
-            'nomor_identitas' => 'required',
-            'role' => 'required|integer'
+            'nama' => 'required',
+            'id_matkul' => 'required'
         ]);
         Kriteria::whereId($id)->update($validatedData);
 

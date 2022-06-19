@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kriteria;
 use App\Models\Nilai;
 use Illuminate\Http\Request;
 use App\Models\Matkul;
@@ -30,7 +31,8 @@ class NilaiController extends Controller
     {
         $matkul = Matkul::pluck('nama', 'id');
         $user = User::pluck('name', 'id');
-        return view('nilai.create', compact('matkul','user'));
+        $kriteria = Kriteria::pluck('nama', 'id');
+        return view('nilai.create', compact('matkul','user','kriteria'));
     }
 
     /**
@@ -45,6 +47,7 @@ class NilaiController extends Controller
             'id_matkul' => 'required',
             'nilai' => 'required',
             'id_user' => 'required',
+            'id_kriteria' => 'required'
         ]);
         $show = Nilai::create($validatedData);
    
@@ -71,8 +74,10 @@ class NilaiController extends Controller
     public function edit($id)
     {
         $nilai = Nilai::findOrFail($id);
-
-        return view('nilai.edit', compact('nilai'));
+        $matkul = Matkul::pluck('nama', 'id');
+        $user = User::pluck('name', 'id');
+        $kriteria = Kriteria::where('id_matkul', $nilai->id_matkul)->pluck('nama', 'id');
+        return view('nilai.edit', compact('matkul', 'nilai', 'user', 'kriteria'));
     }
 
     /**
@@ -85,11 +90,10 @@ class NilaiController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'name' => 'required',
-            'email' => 'required|unique:users,email,'.$id,
-            'password' => 'required',
-            'nomor_identitas' => 'required',
-            'role' => 'required|integer'
+            'id_matkul' => 'required',
+            'nilai' => 'required',
+            'id_user' => 'required',
+            'id_kriteria' => 'required'
         ]);
         Nilai::whereId($id)->update($validatedData);
 
