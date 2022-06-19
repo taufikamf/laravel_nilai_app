@@ -4,6 +4,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\MatkulController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\KriteriaController;
+use App\Http\Controllers\HakAksesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,4 +27,5 @@ Route::resource('/user', UserController::class);
 Route::resource('/matkul', MatkulController::class);
 Route::resource('/nilai', NilaiController::class);
 Route::resource('/kriteria', KriteriaController::class);
+Route::resource('/hak-akses', HakAksesController::class);
 

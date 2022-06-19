@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Menu;
+use App\Models\HakAkses;
 
 class User extends Authenticatable
 {
@@ -43,4 +45,27 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getAccess()
+    {
+        $role = \Auth::user()->role;
+        $menus = Menu::all();
+        foreach ($menus as $key => $menu) {
+            $default = new HakAkses;
+            $default->id_role = $role;
+            $default->id_menu = $menu->id;
+            $default->read = false;
+            $default->create = false;
+            $default->update = false;
+            $default->delete = false;
+            $default->all_data = false;
+            $access = HakAkses::where('id_menu', $menu->id)->where('id_role', $role)->first();
+            if ($access == null) {
+                $menu->access = $default;
+            } else {
+                $menu->access = $access;
+            }
+        }
+        return $menus;
+    }
 }

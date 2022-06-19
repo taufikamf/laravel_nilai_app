@@ -151,11 +151,30 @@
             <li class="menu-header small text-uppercase">
               <span class="menu-header-text">Table</span>
             </li>
-            @if( Auth::user()->role == 1 )
+            @php
+            $menus = Auth::user()->getAccess();
+            @endphp
+            @foreach($menus as $key => $value)
+            @if($value->access->read)
+            <li class="menu-item">
+              <a href="{{$value->url}}" class="menu-link">
+                <i class="menu-icon tf-icons bx {{$value->icon}}"></i>
+                <div data-i18n="Account Settings">{{$value->name}}</div>
+              </a>
+            </li>
+            @endif
+            @endforeach
+            <!-- @if( Auth::user()->role == 1 )
             <li class="menu-item">
               <a href="/user" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user"></i>
                 <div data-i18n="Account Settings">User</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="/hak-akses" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user-check"></i>
+                <div data-i18n="Account Settings">Hak Akses</div>
               </a>
             </li>
             @endif
@@ -191,7 +210,7 @@
                   </a>
                 </li>
               </ul>
-            </li> --}}
+            </li> --}} -->
           </ul>
         </aside>
         <!-- / Menu -->
