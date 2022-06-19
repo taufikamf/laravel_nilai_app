@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Nilai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +16,6 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        dd([Auth::user()]);
 
     }
 
@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        dd([Auth::user()]);
-        return view('home');
+        $nilai = Nilai::all();
+        return view('home', compact('nilai'));
     }
 }
