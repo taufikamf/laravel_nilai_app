@@ -9,7 +9,7 @@ class Menu extends Model
 {
     use HasFactory;
 
-    public function getAccessByRole($id)
+    public static function getAccessByRole($id)
     {
         $role = $id;
         $menus = Menu::all();

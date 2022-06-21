@@ -65,7 +65,6 @@ class MatkulController extends Controller
     public function edit($id)
     {
         $matkul = Matkul::findOrFail($id);
-
         return view('matkul.edit', compact('matkul'));
     }
 
