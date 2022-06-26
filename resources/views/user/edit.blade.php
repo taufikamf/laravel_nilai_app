@@ -33,7 +33,7 @@
           </div>
           <div class="form-group">
               <label for="cases">Password :</label>
-              <input type="password" class="form-control" name="password" value="{{ $user->password }}"/>
+              <input type="password" class="form-control" name="password" value=""/>
           </div>
           <div class="form-group">
               <label for="cases">Nomor Identitas :</label>

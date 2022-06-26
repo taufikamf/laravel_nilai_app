@@ -21,7 +21,7 @@ class NilaiController extends Controller
         $search = $request->input('search');
         
         $nilai = Nilai::query();
-        $user = User::query();
+        
         // $nilai = DB::table('nilais')
         // ->join('matkuls', 'nilais.id_matkul', '=', 'matkuls.id')
         // ->join('kriterias', 'nilais.id_kriteria', '=', 'kriterias.id')
@@ -30,9 +30,11 @@ class NilaiController extends Controller
         // ->get();
 
         if ($search) {
+            $user = User::query();
             $user->where('name', 'like', '%' . $search . '%');
-            $user = $user->pluck('id');
-            $nilai = $nilai->where('id_user',$user[0])->get();
+            $id_user = $user->pluck('id');
+            //dd($id_user);
+            $nilai = $nilai->whereIn('id_user', $id_user)->get();
             return view('nilai.index',compact('nilai'));
         }else{
             $nilai = Nilai::all();
