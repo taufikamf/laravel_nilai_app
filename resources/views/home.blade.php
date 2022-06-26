@@ -103,7 +103,7 @@
 <script>
 var nilai = "<?php echo json_encode($nilai)?>";
 var nilaiLength = "<?php echo json_encode($nilaiLength)?>";
-const dataNilai = JSON.parse(nilai);
+const dataNilai = nilai.map(Number);
 const dataNilaiLength = JSON.parse(nilaiLength);
 var arr = [];
 for(var i = 1; i < dataNilaiLength+1; i++){
