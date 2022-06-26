@@ -31,7 +31,7 @@ class NilaiController extends Controller
 
         if ($search) {
             $user = User::query();
-            $user->where('name', 'like', '%' . $search . '%');
+            $user->where('name', 'ilike', '%' . $search . '%');
             $id_user = $user->pluck('id');
             //dd($id_user);
             $nilai = $nilai->whereIn('id_user', $id_user)->get();
