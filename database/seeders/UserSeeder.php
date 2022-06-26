@@ -16,27 +16,27 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'Taufiq A M',
-            'email' => 'taufikabdul354@gmail.com',
-            'nomor_identitas' => '11210910000023',
+            'name' => 'Ananta Dwiyana Sandra',
+            'email' => 'anantadwiyana@gmail.com',
+            'nomor_identitas' => '11210910000073',
             'role' => 1,
-            'password' => Hash::make('NotMe354')
+            'password' => Hash::make('Ananta1305')
         ]);
 
         DB::table('users')->insert([
-            'name' => 'Agus',
-            'email' => 'agus@gmail.com',
-            'nomor_identitas' => '11210910000017',
+            'name' => 'Budi',
+            'email' => 'budi@gmail.com',
+            'nomor_identitas' => '13300190000017',
             'role' => 2,
-            'password' => Hash::make('agus123')
+            'password' => Hash::make('budi123')
         ]);
 
         DB::table('users')->insert([
-            'name' => 'Fariz A',
-            'email' => 'farizalmsyh@gmail.com',
-            'nomor_identitas' => '11210910000011',
+            'name' => 'Haifa Syabina',
+            'email' => 'haifa@gmail.com',
+            'nomor_identitas' => '11210910000055',
             'role' => 3,
-            'password' => Hash::make('fariz123')
+            'password' => Hash::make('haifa123')
         ]);
     }
 }

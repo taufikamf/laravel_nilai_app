@@ -7,6 +7,7 @@ use App\Models\Nilai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -28,28 +29,21 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // $nilai = Nilai::all()->join('matkuls', 'nilai.id_matkul', '=', 'matkuls.id')
-        $nilai = DB::table('nilais')
-            ->join('matkuls', 'nilais.id_matkul', '=', 'matkuls.id')
-            ->join('kriterias', 'nilais.id_kriteria', '=', 'kriterias.id')
-            ->select('nilais.*', 'matkuls.nama as nama_matkul','kriterias.nama as nama_kriteria')
-            ->get();
+        $nilai = Nilai::all();
+        $nilai = $nilai->pluck('nilai')->toArray();
+        $nilaiLength = count($nilai);
+        $ipk = (array_sum($nilai) / ($nilaiLength)) * 0.1 / 2.4;
+        $ipk = substr($ipk,0,3);
 
-        $nilai = $nilai->toArray();
-        // $kosong= []; 
-        // foreach($nilai as $nilais){
-        //     $kosong = array_merge($kosong, $nilais);
-        // }
+        $id_matkul = Nilai::select('id_matkul')->where('id_user', auth()->id())->distinct()->get();
 
-        // dd($nilai);
-        // $nilaini = json_encode($nilai);
-        // dd(json_decode($nilaini));
-        // $nilai = array('nilai' => json_decode($nilai));
-        // dd($nilai->where('id_user',3));
-        $matkul = Matkul::all();
-        // $matkul2 = DB::table('matkuls')
-        //             ->where("id","=", "1")->get();
-        // dd($matkul);
-        return view('home', compact('nilai','matkul'));
+        $matkul = [];
+        foreach ($id_matkul as $key => $value) {
+            $matkul[$key]['matkul'] = Matkul::find($value['id_matkul']);
+            $nilaiWithKriteria = Nilai::with('kriteria')->where('id_user', auth()->id())->where('id_matkul', $value['id_matkul'])->get();
+            $matkul[$key]['nilai'] = $nilaiWithKriteria;
+        }
+
+        return view('home', compact('matkul','nilai','ipk','nilaiLength'));
     }
 }

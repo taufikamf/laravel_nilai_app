@@ -18,7 +18,9 @@
           <td>ID</td>
           <td>Nama Matkul</td>
           <td>Nama Kriteria</td>
+          @if(Auth::user()->role == 1)
           <td colspan="2 text-center">Action</td>
+          @endif
         </tr>
     </thead>
     <tbody>
@@ -27,6 +29,7 @@
             <td>{{$values->id}}</td>
             <td>{{$values->matkul->nama}}</td>
             <td>{{$values->nama}}</td>
+            @if(Auth::user()->role == 1)
             <td><a href="{{ route('kriteria.edit', $values->id)}}" class="btn btn-primary">Edit</a></td>
             <td>
                 <form action="{{ route('kriteria.destroy', $values->id)}}" method="post">
@@ -35,6 +38,7 @@
                   <button class="btn btn-danger" type="submit">Delete</button>
                 </form>
             </td>
+            @endif
         </tr>
         @endforeach
     </tbody>

@@ -27,7 +27,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>Akademik</title>
 
     <meta name="description" content="" />
 
@@ -42,6 +42,7 @@
       rel="stylesheet"
     />
     <!-- Icons. Uncomment required icon fonts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('assets/vendor/fonts/boxicons.css')}}" />
 
     <!-- Core CSS -->
@@ -73,8 +74,8 @@
         <!-- Menu -->
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-            <a href="index.html" class="app-brand-link">
-              <span class="app-brand-logo demo">
+            <a href="/" class="app-brand-link">
+              {{-- <span class="app-brand-logo demo">
                 <svg
                   width="25"
                   viewBox="0 0 25 42"
@@ -128,8 +129,10 @@
                     </g>
                   </g>
                 </svg>
+              </span> --}}
+              <span class="app-brand-logo demo">
+                <img src="{{ asset('assets/img/shining.gif')}}" width="170" alt="">
               </span>
-              <span class="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span>
             </a>
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -142,7 +145,7 @@
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
             <li class="menu-item active">
-              <a href="index.html" class="menu-link">
+              <a href="/" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
               </a>
@@ -164,6 +167,7 @@
             </li>
             @endif
             @endforeach
+              <img src="{{ asset('assets/img/qr.png')}}" class="card-img-top p-3" alt="">
             <!-- @if( Auth::user()->role == 1 )
             <li class="menu-item">
               <a href="/user" class="menu-link">
@@ -230,19 +234,6 @@
             </div>
 
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-              <!-- Search -->
-              <div class="navbar-nav align-items-center">
-                <div class="nav-item d-flex align-items-center">
-                  <i class="bx bx-search fs-4 lh-0"></i>
-                  <input
-                    type="text"
-                    class="form-control border-0 shadow-none"
-                    placeholder="Search."
-                    aria-label="Search."
-                  />
-                </div>
-              </div>
-              <!-- /Search -->
 
               <ul class="navbar-nav flex-row align-items-center ms-auto">
                 <!-- Place this tag where you want the button to render. -->
@@ -287,30 +278,6 @@
                             <small class="text-muted">{{ $roles[Auth::user()->role] }}</small>
                           </div>
                         </div>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="dropdown-divider"></div>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <i class="bx bx-user me-2"></i>
-                        <span class="align-middle">My Profile</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <i class="bx bx-cog me-2"></i>
-                        <span class="align-middle">Settings</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <span class="d-flex align-items-center align-middle">
-                          <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                          <span class="flex-grow-1 align-middle">Billing</span>
-                          <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-                        </span>
                       </a>
                     </li>
                     <li>
@@ -370,6 +337,7 @@
 
     <!-- Vendors JS -->
     <script src="{{ asset('assets/vendor/libs/apex-charts/apexcharts.js')}}"></script>
+    <script src="{{ asset('assets/vendor/libs/chartjs/chart.js')}}"><script>
 
     <!-- Main JS -->
     <script src="{{ asset('assets/js/main.js')}}"></script>

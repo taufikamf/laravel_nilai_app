@@ -25,7 +25,7 @@
               @csrf
               @method('PATCH')
               <label for="country_name">Nama Kriteria :</label>
-              <input type="text" class="form-control" name="name" value="{{ $kriteria->nama }}"/>
+              <input type="text" class="form-control" name="nama" value="{{ $kriteria->nama }}"/>
           </div>
           <div class="form-group">
             <label for="cases">Nama Matkul :</label>

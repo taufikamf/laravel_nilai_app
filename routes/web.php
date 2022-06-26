@@ -1,11 +1,13 @@
 <?php
 
+use App\Exports\NilaisExport;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MatkulController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\HakAksesController;
 use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Facades\Excel;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +30,9 @@ Route::resource('/matkul', MatkulController::class);
 Route::resource('/nilai', NilaiController::class);
 Route::resource('/kriteria', KriteriaController::class);
 Route::resource('/hak-akses', HakAksesController::class);
+Route::get('export-csv', function () {
+    return Excel::download(new NilaisExport, 'nilai.csv');
+});
+Route::get('/nilai/search/', [NilaiController::class, 'search']);
+
 

@@ -25,7 +25,7 @@
               @csrf
               @method('PATCH')
               <label for="country_name">Nama :</label>
-              <input type="text" class="form-control" name="name" value="{{ $matkul->name }}"/>
+              <input type="text" class="form-control" name="nama" value="{{ $matkul->nama }}"/>
           </div>
           <div class="form-group">
               <label for="cases">Deskripsi :</label>
