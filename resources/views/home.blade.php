@@ -101,12 +101,10 @@
 </div>
 <script src="{{ asset('assets/vendor/libs/chartjs/chart.js')}}"></script>
 <script>
-var nilai = "<?php echo json_encode($nilai)?>";
-var nilaiLength = "<?php echo json_encode($nilaiLength)?>";
-const dataNilai = nilai.map(Number);
-const dataNilaiLength = JSON.parse(nilaiLength);
+var nilai = <?php echo json_encode($nilai)?>;
+var nilaiLength = <?php echo json_encode($nilaiLength)?>;
 var arr = [];
-for(var i = 1; i < dataNilaiLength+1; i++){
+for(var i = 1; i < nilaiLength+1; i++){
   arr.push(i);
 }
 console.log(arr)
@@ -120,7 +118,7 @@ if (barChart) {
       labels: arr,
       datasets: [
         {
-          data: dataNilai,
+          data: nilai,
           backgroundColor: cyanColor,
           borderColor: 'transparent',
           maxBarThickness: 15,
