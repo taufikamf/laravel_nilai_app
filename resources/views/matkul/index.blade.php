@@ -22,9 +22,9 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($matkul as $matkuls)
+        @foreach($matkul as $key=>$matkuls)
         <tr>
-            <td>{{$matkuls->id}}</td>
+            <td>{{$key+1}}</td>
             <td>{{$matkuls->nama}}</td>
             <td>{{$matkuls->deskripsi}}</td>
             <td><a href="{{ route('matkul.edit', $matkuls->id)}}" class="btn btn-primary">Edit</a></td>

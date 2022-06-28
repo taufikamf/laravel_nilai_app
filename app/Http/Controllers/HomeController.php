@@ -31,8 +31,11 @@ class HomeController extends Controller
     {
         $nilai = Nilai::all();
         $nilai = $nilai->pluck('nilai')->toArray();
-        $nilaiLength = count($nilai);
-        $ipk = (array_sum($nilai) / ($nilaiLength)) * 0.1 / 2.4;
+        $nilaiIndividual = Nilai::all();
+        $nilaiIndividual = $nilaiIndividual->where('id_user',auth()->id());
+        $nilaiIndividual = $nilaiIndividual->pluck('nilai')->toArray();
+        $nilaiLength = count($nilaiIndividual);
+        $ipk = (array_sum($nilaiIndividual) / ($nilaiLength)) * 0.1 / 2.4;
         $ipk = substr($ipk,0,3);
 
         $id_matkul = Nilai::select('id_matkul')->where('id_user', auth()->id())->distinct()->get();

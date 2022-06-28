@@ -27,9 +27,9 @@
       @php
       $roles = ['', 'Administrator', 'Dosen', 'Mahasiswa'];
       @endphp
-        @foreach($user as $users)
+        @foreach($user as $key=>$users)
         <tr>
-            <td>{{$users->id}}</td>
+            <td>{{$key+1}}</td>
             <td>{{$users->name}}</td>
             <td>{{$users->email}}</td>
             <td>{{$users->nomor_identitas}}</td>

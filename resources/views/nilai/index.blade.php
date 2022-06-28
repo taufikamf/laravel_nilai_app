@@ -43,9 +43,9 @@
       @php
       $roles = ['', 'Administrator', 'Dosen', 'Mahasiswa'];
       @endphp
-        @foreach($nilai as $nilais)
+        @foreach($nilai as $key=>$nilais)
         <tr>
-            <td>{{$nilais->id}}</td>
+            <td>{{$key+1}}</td>
             <td>{{$nilais->matkul->nama}}</td>
             <td>{{$nilais->kriteria->nama}}</td>
             <td>{{$nilais->user->name}}</td>

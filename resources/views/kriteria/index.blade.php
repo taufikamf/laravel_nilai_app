@@ -24,9 +24,9 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($kriteria as $values)
+        @foreach($kriteria as $key=>$values)
         <tr>
-            <td>{{$values->id}}</td>
+            <td>{{$key+1}}</td>
             <td>{{$values->matkul->nama}}</td>
             <td>{{$values->nama}}</td>
             @if(Auth::user()->role == 1)
