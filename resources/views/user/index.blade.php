@@ -36,11 +36,13 @@
             <td>{{ $roles[$users->role] }}</td>
             <td><a href="{{ route('user.edit', $users->id)}}" class="btn btn-primary">Edit</a></td>
             <td>
+              @if($users->role != 1)
                 <form action="{{ route('user.destroy', $users->id)}}" method="post">
                   @csrf
                   @method('DELETE')
                   <button class="btn btn-danger" type="submit">Delete</button>
                 </form>
+              @endif
             </td>
         </tr>
         @endforeach

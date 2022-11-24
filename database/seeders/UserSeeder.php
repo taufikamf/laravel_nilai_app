@@ -32,11 +32,11 @@ class UserSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'name' => 'Haifa Syabina',
-            'email' => 'haifa@gmail.com',
+            'name' => 'Satria Aditama',
+            'email' => 'satria@gmail.com',
             'nomor_identitas' => '11210910000055',
             'role' => 3,
-            'password' => Hash::make('haifa123')
+            'password' => Hash::make('satria123')
         ]);
     }
 }

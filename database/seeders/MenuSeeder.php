@@ -27,6 +27,12 @@ class MenuSeeder extends Seeder
             'show_owned' => false
         ]);
         DB::table('menus')->insert([
+            'name' => 'Kelas',
+            'icon' => 'bx-chalkboard',
+            'url' => '/kelas',
+            'show_owned' => true
+        ]);
+        DB::table('menus')->insert([
             'name' => 'Nilai',
             'icon' => 'bx-star',
             'url' => '/nilai',

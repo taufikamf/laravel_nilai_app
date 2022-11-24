@@ -32,7 +32,7 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon/logo.ico')}}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon/favicon.ico')}}" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -131,7 +131,7 @@
                 </svg>
               </span> --}}
               <span class="app-brand-logo demo">
-                <img src="{{ asset('assets/img/shining.gif')}}" width="170" alt="">
+                <img src="{{ asset('assets/img/logo-head.png')}}" width="170" alt="">
               </span>
             </a>
 

@@ -61,8 +61,8 @@
               <!-- Logo -->
               <div class="app-brand justify-content-center">
                 <a href="index.html" class="app-brand-link gap-2">
-                  <img src="{{ asset('assets/img/logo.gif')}}" alt="" width="50">
-                  <span class="app-brand-text demo text-body fw-bolder">UINJKT</span>
+                  <img src="{{ asset('assets/img/logo.png')}}" alt="" width="100">
+                  {{-- <span class="app-brand-text demo text-body fw-bolder" id="brand">TASS</span> --}}
                 </a>
               </div>
               <!-- /Logo -->
@@ -149,3 +149,8 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
   </body>
 </html>
+<style scoped>
+  #brand{
+    text-transform: uppercase
+  }
+</style>
